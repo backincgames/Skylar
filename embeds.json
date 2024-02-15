@@ -1,0 +1,29 @@
+{
+  "WelcomeEmbed": {
+    "title": "haiiii little cutie",
+    "description": "Im Skylar and im your egirl<3 *hugsssss*, since I havent seen u b4 im gonna give u 1000 uwu bucks, have fun pookie<33",
+    "colour": 850070,
+    "author": {
+      "name": "Welcome to Skylar",
+      "icon_url": "https://replit.com/@BACK-Incorporated/AnonymousPrestige#Resources/Skylar.png"
+    },
+    "fields": [
+      {
+        "name": "What is Skylar?",
+        "value": "Your egirl and an entire economy, use the bot to hug others (tickle them if you want..) get married to them and go on fishing trips, plus this is only the start there is way more to explore",
+        "inline": false
+      },
+      {
+        "name": "Be careful!",
+        "value": "Along with hugging your egirl youuu partnered up with, you gotta gimme your hearts too otherwise I will dump you and take all your money away and you will have to start overrrr :(",
+        "inline": false
+      }
+    ],
+    "thumbnail": {
+      "url": "https://replit.com/@BACK-Incorporated/AnonymousPrestige#Resources/Skylar.png"
+    },
+    "footer": {
+      "text": "good luck my pookie ilysmmmm<33"
+    }
+  }
+}
