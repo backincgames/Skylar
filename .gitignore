@@ -164,3 +164,4 @@ cython_debug/
 replit.nix
 poetry.lock
 pyproject.toml
+.local
