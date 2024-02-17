@@ -1,5 +1,4 @@
 import discord
-from colorama import Fore
 from discord.ext import commands
 
 import embeds as embeds
@@ -10,6 +9,8 @@ class cutecmds(commands.Cog):
     self.bot = bot
     self._last_member = None
 
+  
+  
   # Hug command
   # Hug another user in the server (or put a userid in lol)
   @commands.hybrid_command(name="hug", description="Hug someone :3")
