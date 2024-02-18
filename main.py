@@ -82,8 +82,13 @@ async def on_message(message):
       if message.author == bot.user:
         return
       else:
+        if message.guild.id == 1198226747053846528:
+          await message.channel.send('This server is banned from using AI')
+          return
         msg = message.content.replace('<@1207462122863198310> ','')
         msg = 'user:'+str(message.author)+'msg:'+msg
-        await message.channel.send(ai.botai.generate_ai_response(ai.botai,msg))
+        msg = "Skylar's AI capability has been shut down temporarily until the AI script has been completed, this is to ensure everyone can use the bot without any issues. Thank you for your patience."
+        await message.channel.send(msg)
+        #await message.channel.send(ai.botai.generate_ai_response(ai.botai,msg))
 
 bot.run(os.environ['RELEASE_BOT_SECRET'])
