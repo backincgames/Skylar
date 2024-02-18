@@ -5,6 +5,8 @@ def tagcolor(service: str):
   service = str.lower(service)
   if service == 'bot':
     color = Fore.BLUE
+  elif service == 'sys':
+    color = Fore.LIGHTBLUE_EX
   elif service == 'cogs' or service == 'warn':
     color = Fore.YELLOW
   elif service == 'ai' or service == 'ok':
@@ -15,20 +17,25 @@ def tagcolor(service: str):
     color = Fore.WHITE
   return color
   
-def printmsg(service: str,message: str):
-  service = tagcolor(service)+'['+str.upper(service)+']: '
-  print(service+Fore.WHITE+message)
+def printmsg(service: str,message: str,passfail: str = None):
+  if passfail is not None:
+    service = tagcolor(service)+'['+str.upper(service)+'] '
+    if passfail == 'pass':
+      passfail = 'ok'
+    passfail = Fore.WHITE+'['+tagcolor(passfail)+str.upper(passfail)+Fore.WHITE+']: '
+    if 'FAIL' in passfail:
+      print(service+passfail+Fore.RED+message)
+    else:
+      print(service+passfail+message)
+  else:
+    service = tagcolor(service)+'['+str.upper(service)+']: '
+    print(service+Fore.WHITE+message)
   return
 
+# Depracated
 def passfail(service,message,oktag):
-  service = tagcolor(service)+'['+str.upper(service)+'] '
-  if oktag == 'pass':
-    oktag = 'ok'
-  oktag = Fore.WHITE+'['+tagcolor(oktag)+str.upper(oktag)+Fore.WHITE+']: '
-  if 'FAIL' in oktag:
-    print(service+oktag+Fore.RED+message)
-  else:
-    print(service+oktag+message)
+  warn('sys','Old Logger API used')
+  printmsg(service,message,oktag)
 
 def warn(service,message):
   service = tagcolor(service)+'['+str.upper(service)+'] '

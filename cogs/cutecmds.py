@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 
 import embeds as embeds
+from eventlogger import printmsg, warn
 
 
 class cutecmds(commands.Cog):

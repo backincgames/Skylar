@@ -12,17 +12,17 @@ import ai
 from eventlogger import passfail, printmsg
 
 print(Fore.BLUE+"Backincorporated Games Studio\nSkylar AP v0.7")
-printmsg('bot','Connecting to Discord')
+printmsg('sys','Connecting to Discord')
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix='',intents=intents)
 
 # Bot Startup
 @bot.event
 async def on_ready():
-  passfail('bot','Connected to Discord','pass')
+  printmsg('sys','Connected to Discord','pass')
   
   # Cogs
-  printmsg('bot','Loading commands')
+  printmsg('sys','Loading commands')
   for filename in os.listdir('cogs'):
     if filename.endswith(".py"):
         cog_name = filename[:-3] 
@@ -32,42 +32,42 @@ async def on_ready():
             # Dynamically load the extension
             printmsg('cogs','Loading '+cog_module)
             await bot.load_extension(cog_module)
-            passfail('cogs','Loaded '+cog_module,'pass')
+            printmsg('cogs','Loaded '+cog_module,'pass')
         except Exception as e:
-            passfail('cogs',f'Failed to load {cog_module} {e}','fail')
-            passfail('bot','Failed to complete boot sequence due to exception','fail')
+            printmsg('cogs',f'Failed to load {cog_module} {e}','fail')
+            printmsg('bot','Failed to complete boot sequence due to exception','fail')
             sys.exit('Failed to complete boot sequence due to exception')
 
-  passfail('cogs','Loaded all commands','pass')
+  printmsg('cogs','Loaded all commands','pass')
 
   # Load AI File
   try:
     printmsg('ai','Loading AI')
     await bot.load_extension('ai')
-    passfail('ai','Loaded AI','pass')
+    printmsg('ai','Loaded AI','pass')
   except Exception as e:
-    passfail('ai',f'Failed to load ai {e}','fail')
-    passfail('bot','Failed to complete boot sequence due to exception','fail')
+    printmsg('ai',f'Failed to load ai {e}','fail')
+    printmsg('sys','Failed to complete boot sequence due to exception','fail')
     sys.exit('Failed to complete boot sequence due to exception')
   
   # Syncing
   try:
     printmsg('bot','Syncing command tree')
     await bot.tree.sync()
-    passfail('bot','Commands synced','pass')
+    printmsg('bot','Commands synced','pass')
   except Exception as e:
-    passfail('bot',f'Failed to sync command tree {e}','fail')
-    passfail('bot','Failed to complete boot sequence due to exception','fail')
+    printmsg('bot',f'Failed to sync command tree {e}','fail')
+    printmsg('sys','Failed to complete boot sequence due to exception','fail')
     sys.exit('Failed to complete boot sequence due to exception')
 
   # Presence
   try:
     printmsg('bot','Setting presence')
     await bot.change_presence(activity=discord.Game(name="giving u a tickle :D"))
-    passfail('bot','Presence set','pass')
+    printmsg('bot','Presence set','pass')
   except Exception as e:
-    passfail('bot',f'Failed to set presence {e}','fail')
-    passfail('bot','Failed to complete boot sequence due to exception','fail')
+    printmsg('bot',f'Failed to set presence {e}','fail')
+    printmsg('sys','Failed to complete boot sequence due to exception','fail')
     sys.exit('Failed to complete boot sequence due to exception')
 
   # Skylar is booted!1!1!1
